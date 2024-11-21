@@ -1,10 +1,10 @@
+
 let cart = [];
 const cartCount = document.getElementById("cartCount");
 const cartTotal = document.getElementById("cartTotal");
 const cartItems = document.getElementById("cartItems");
 const modal = document.getElementById("cartModal");
 
-// Abrir y cerrar el carrito
 document.getElementById("openCart").addEventListener("click", () => {
     modal.style.display = "flex";
     renderCart();
@@ -14,7 +14,6 @@ document.getElementById("closeCart").addEventListener("click", () => {
     modal.style.display = "none";
 });
 
-// Agregar productos al carrito
 document.querySelectorAll(".add-to-cart").forEach((button) => {
     button.addEventListener("click", (e) => {
         const product = e.target.closest(".producto");
@@ -34,13 +33,11 @@ document.querySelectorAll(".add-to-cart").forEach((button) => {
     });
 });
 
-// Actualizar el número de productos en el carrito
 function updateCartCount() {
     const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
     cartCount.textContent = totalItems;
 }
 
-// Renderizar el carrito
 function renderCart() {
     cartItems.innerHTML = "";
     let total = 0;
@@ -61,7 +58,6 @@ function renderCart() {
     cartTotal.textContent = total.toFixed(2);
 }
 
-// Eliminar productos del carrito
 function removeFromCart(index) {
     cart.splice(index, 1);
     updateCartCount();
